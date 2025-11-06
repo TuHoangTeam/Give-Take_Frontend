@@ -1,5 +1,3 @@
-import { Button } from '@/components/Button';
-import { getData, removeData } from '@/utils/asyncStorage';
 import { router } from 'expo-router';
 import { useEffect } from 'react';
 import { Text, View } from 'react-native';
