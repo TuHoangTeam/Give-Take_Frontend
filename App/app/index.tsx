@@ -1,57 +1,41 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
-import { useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { ActivityIndicator, View } from 'react-native';
 
-export default function HomeScreen() {}
 
-// useEffect(() => {
-//   checkFirstTimeOpen();
-// }, []);
-// const checkFirstTimeOpen = async () => {
-//   let onboarded = await getData('onboarded');
-//   if (onboarded !== '1') {
-//     router.replace('/onboarding');
-//   }
-// };
-// return (
-//   <View className="flex-1 justify-center items-center">
-//     <Text className="m-6 uppercase font-bold text-3xl text-center">This is the homepage</Text>
-//     <Button title="View Onboarding Again" onPress={() => router.replace('/onboarding')} />
-//     <Button title="View Tab layout" onPress={() => router.push('/nav/login')} />
-//     <Button title="Clear Storage" variant="danger" onPress={() => removeData('onboarded')} />
-//   </View>
-// );
-// export default function OnboardingScreen() {
-// const backToHome = () => {
-//   storeData('onboarded', '1');
-//   router.replace('/');
-// };
-// return (
-//   <View className="flex-1 justify-center items-center">
-//     <Onboarding
-//       onDone={backToHome}
-//       onSkip={backToHome}
-//       pages={[
-//         {
-//           backgroundColor: '#000',
-//           image: <Image source={require('../../assets/images/react-logo.png')} />,
-//           title: 'Onboarding',
-//           subtitle: 'Welcome',
-//         },
-//         {
-//           backgroundColor: '#000',
-//           image: <Image source={require('../../assets/images/react-logo.png')} />,
-//           title: 'Onboarding',
-//           subtitle: 'This is the onboarding screen',
-//         },
-//         {
-//           backgroundColor: '#000',
-//           image: <Image source={require('../../assets/images/react-logo.png')} />,
-//           title: 'Onboarding',
-//           subtitle: 'Done with React Native Onboarding Swiper',
-//         },
-//       ]}
-//     />
-//   </View>
-// );
-// }
+export default function Index() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    checkFirstTimeOpen();
+  }, []);
+
+  const checkFirstTimeOpen = async () => {
+    try {
+      // Kiểm tra xem trong bộ nhớ có đánh dấu là đã xem chưa
+      const value = await AsyncStorage.getItem('isOnboardingCompleted');
+      
+      if (value === 'true') {
+        // Nếu xem rồi -> Vào thẳng trang Home của bạn bro
+        // Lưu ý: Đường dẫn này phải đúng với file home.tsx của bạn bro
+        router.replace('/(example-code)/nav/home');
+      } else {
+        // Nếu chưa xem -> Vào trang Onboarding
+        router.replace('/onboarding');
+      }
+    } catch (e) {
+      // Lỗi thì cứ cho vào onboarding cho chắc
+      router.replace('/onboarding');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Màn hình loading xoay xoay trong lúc chờ kiểm tra
+  return (
+    <View className="flex-1 justify-center items-center bg-white">
+      <ActivityIndicator size="large" color="#00ff00" />
+    </View>
+  );
+}
