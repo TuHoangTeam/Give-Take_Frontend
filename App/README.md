@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-# Give-Take
-Ứng dụng Give &amp; Take – một nền tảng hỗ trợ chia sẻ đồ cũ trong cộng đồng (như sinh viên, khu trọ, hoặc cùng trường học).  App cho phép mọi người đăng tải những món đồ cũ không dùng nữa (quần áo, sách, dụng cụ học tập, đồ điện tử nhỏ, v.v.) để người khác có thể xin về miễn phí hoặc trao đổi đồ với nhau, thay vì bỏ đi lãng phí.
-
-
-=======
->>>>>>> 01bec45d21651ce0c4131c31cf56463df67ad8e1
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
@@ -57,7 +48,3 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-<<<<<<< HEAD
-=======
->>>>>>> 46df1736cfa30576bd232baa1856a989d7af6f79
->>>>>>> 01bec45d21651ce0c4131c31cf56463df67ad8e1
