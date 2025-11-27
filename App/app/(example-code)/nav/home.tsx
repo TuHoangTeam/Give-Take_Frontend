@@ -78,9 +78,16 @@ const PRODUCTS: Product[] = [
 
 const Header = () => (
   <View className="flex-row items-center justify-between p-4 bg-white shadow-sm">
-    <View>
-      <Text className="text-sm text-gray-500">Chào mừng trở lại!</Text>
-      <Text className="text-xl font-bold text-gray-800">ShopOnline</Text>
+    <View className="flex-row items-center">
+      <Image
+        source={require('../../../assets/icon/logo.png')}
+        style={{ width: 40, height: 40, marginRight: 8 }}
+        resizeMode="contain"
+      />
+      <View>
+        <Text className="text-sm text-gray-500">Chào mừng trở lại!</Text>
+        <Text className="text-xl font-bold text-gray-800">Give & Take</Text>
+      </View>
     </View>
     <TouchableOpacity className="relative">
       <Text className="text-3xl">🛒</Text>

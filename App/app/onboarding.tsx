@@ -2,13 +2,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 import React, { useRef, useState } from 'react';
 import {
-    FlatList,
-    Image,
-    SafeAreaView,
-    Text,
-    TouchableOpacity,
-    useWindowDimensions,
-    View
+  FlatList,
+  Image,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  useWindowDimensions,
+  View
 } from 'react-native';
 
 
@@ -54,6 +54,21 @@ export default function OnboardingScreen() {
 
   
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
+
+  // Add getItemLayout for FlatList scrollToIndex
+  const getItemLayout = (_data: any, index: number) => ({
+    length: width,
+    offset: width * index,
+    index,
+  });
+
+  // Add onScrollToIndexFailed handler
+  const onScrollToIndexFailed = (info: any) => {
+    const wait = new Promise(resolve => setTimeout(resolve, 500));
+    wait.then(() => {
+      slideRef.current?.scrollToIndex({ index: info.index, animated: true });
+    });
+  };
 
  
   const finishOnboarding = async () => {
@@ -131,6 +146,8 @@ export default function OnboardingScreen() {
           onViewableItemsChanged={viewableItemsChanged}
           viewabilityConfig={viewConfig}
           ref={slideRef}
+          getItemLayout={getItemLayout}
+          onScrollToIndexFailed={onScrollToIndexFailed}
         />
 
         
