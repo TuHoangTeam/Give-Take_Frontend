@@ -12,6 +12,9 @@ jobs:
   test-and-analyze:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./App
 
     steps:
       - name: Checkout repository
