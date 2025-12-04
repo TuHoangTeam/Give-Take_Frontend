@@ -12,10 +12,6 @@ jobs:
   test-and-analyze:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ./App
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -28,15 +24,17 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
-          cache-dependency-path: './App/package-lock.json'
+          cache-dependency-path: 'App/package-lock.json'
 
 
       - name: Install dependencies
         run: npm ci
+        working-directory: App
 
 
       - name: Run Jest Coverage Tests
         run: npm run test:coverage
+        working-directory: App
 
 
       - name: Check coverage files
@@ -49,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-report
-          path: coverage/lcov-report/
+          path: App/coverage/lcov-report/
           retention-days: 7
 
 
@@ -57,11 +55,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-lcov
-          path: coverage/lcov.info
+          path: App/coverage/lcov.info
           retention-days: 7
 
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
+        with:
+          projectBaseDir: App
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
