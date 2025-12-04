@@ -46,3 +46,7 @@ coverage/
 
 
 You can open `coverage/index.html` in your browser to view a detailed coverage dashboard (statements, branches, functions, lines).
+
+### 3. Badge
+[![React Native CI - Test, Report & SonarCloud](https://github.com/TuHoangTeam/Give-Take_Frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/TuHoangTeam/Give-Take_Frontend/actions/workflows/ci.yml)  
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=TuHoangTeam_Give-Take_Frontend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=TuHoangTeam_Give-Take_Frontend)
