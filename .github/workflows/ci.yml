@@ -41,6 +41,7 @@ jobs:
         run: |
           ls -la coverage/
           cat coverage/lcov.info | head -20
+        working-directory: App
 
 
       - name: Upload HTML Test Report
