@@ -1,7 +1,7 @@
 {
   "servers": {
     "Sentry": {
-      "url": "https://mcp.sentry.dev/mcp/tuhoangteam/tuhoangteam-expo-app",
+      "url": "https://mcp.sentry.dev/mcp/tuhoangteam/tu-hoang",
       "type": "http"
     }
   }
