@@ -41,7 +41,15 @@
           }
         }
       ],
-      "expo-font"
+      "expo-font",
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "tu-hoang",
+          "organization": "tuhoangteam"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
